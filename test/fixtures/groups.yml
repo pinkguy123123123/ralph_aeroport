@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  groupname: MyString
+  code: MyString
+  des1: MyString
+  des2: MyString
+  des3: MyString
+
+two:
+  groupname: MyString
+  code: MyString
+  des1: MyString
+  des2: MyString
+  des3: MyString

@@ -1,0 +1,63 @@
+<div class="container">
+<h3>Bücher</h3>
+<table class="table">
+  <col class="col-sm-1">
+  <tr>
+    <%= form_for :group, url: {action: "create"}, class: "form-horizontal" do |g| %>
+    <tr>
+      <td><%=g.label :groupname, "TITEL"%></td>
+      <td>
+        <%= g.text_field :groupname, class: "form-control" %>
+      </td>
+    </tr>
+    <tr>
+      <td><%=g.label :code, "BESCHREIBUNG"%></td>
+      <td>
+        <%= g.text_field :code, class: "form-control" %>
+      </td>
+    </tr>
+    <tr>
+      <td><%=g.label :des1, "THEMA"%></td>
+      <td>
+        <%= g.text_field :des1, class: "form-control" %>
+      </td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td><%=g.label :des3, "ERSCHEINUNGSDATUM"%></td>
+      <td>
+        <%= g.text_field :des3, class: "form-control" %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= g.submit "Save Book", class: "btn btn-success"%>  <% end %></td><td></td>
+    </tr>
+</table>
+<table class="table">
+  <col class="col-sm-1">
+  <col class="col-sm-1">
+  <col class="col-sm-2">
+  <col class="col-sm-2">
+  <col class="col-sm-2">
+  <col class="col-sm-1">
+
+<tr><td><h4>Buch</h4></td>
+  <td><h4>Beschreibung</h4></td>
+<td><h4>Thema</h4></td>
+<td><h4>Erscheinungsdatum</h4></td>
+
+</tr>
+<% @groups.each do |g| %>
+    <tr>
+      <td><%= g.groupname %></td>
+      <td><%= g.code %></td>
+      <td><%= g.des1 %></td>
+      <td><%= g.des2 %></td>
+      <td><%= g.des3 %></td>
+      <td><%= link_to "Delete", group_path(g), method: :delete, data: { confirm: "Delete Flight?" } , class: "btn btn-danger"%></td>
+    </tr>
+  <% end %>
+<tr><td>Number of flights: <%=@NumberOfGroups%></td><td></td></tr>
+<tr><td><%= link_to "Passengers", people_path, class: "btn btn-success"%></td><td></td></tr>
+</table>

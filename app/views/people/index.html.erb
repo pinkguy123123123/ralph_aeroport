@@ -1,0 +1,76 @@
+<div class="container">
+  <h3>PASSENGERS</h3>
+  <table class="table">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <col class="col-sm-1">
+    <tr>
+      <th>Nr</th>
+      <th>FLIGHT</th>
+      <th>NAME</th>
+      <th>FIRST</th>
+      <th>EMAIL</th>
+      <th>AGE</th>
+      <th>SEX</th>
+      <th>PASSPORT</th>
+      <th>BIRTH</th>
+      <th>RATED</th>
+      <th>EDIT</th>
+      <th>DESTROY</th>
+    </tr>
+    <% @people.each do |p| %>
+      <tr>
+        <td><%= p.id %></td>
+        <td><%=@groups.find(p.group_id).groupname%></td>
+        <td><%= p.name %></td>
+        <td><%= p.firstname %></td>
+        <td><%= p.email %></td>
+        <td><%= p.age %></td>
+        <td><%if p.sex %>
+            FEMALE
+          <%else%>
+            MALE
+          <%end%></td>
+        <td><%= p.des1 %></td>
+        <td><%= p.des2 %></td>
+        <td>
+          <% if p.des3=="WANTED"%>
+            <font color="red"><strong><%= p.des3 %><br /> Police is coming!</strong></font>
+          <%else%>
+          <%= p.des3 %>
+        <%end%></td>
+        <td><%= link_to "Edit", edit_person_path(p) , class: "btn btn-success"%></td>
+        <td><%= link_to "Löschen", person_path(p), method: :delete, data: { confirm: "DESTROY PERSON?" } , class: "btn btn-danger"%></td>
+      </tr>
+    <% end %>
+    <tr><td colspan="2">NUMBER OF PEOPLE: </td><td colspan="10"><%= @NumberOfPeople %></td></tr>
+    <tr><td colspan="2">AVERAGE AGE: </td><td colspan="10"><%= @AverageAge %></td></tr>
+    <tr><td colspan="2">FLIGHT: </td><td colspan="8">
+      <%@groups.all.each do |g|%>
+
+          <%i=0%>
+        <%@people.all.each do |pp|%>
+            <%if pp.group_id==g.id%>
+                <%i=i+1%>
+            <%end%>
+          <%end%>
+           <%=i%> PASSENGERS ON <%=g.groupname%><br>
+      <%end%>
+
+
+     </td></tr>
+  </table>
+  <h4>
+    <%= link_to "ADD Passenger ", new_person_path, class: "btn btn-success"%>
+    <%= link_to "FLIGHTS ", groups_path , class: "btn btn-success"%>
+  </h4>
+</div>

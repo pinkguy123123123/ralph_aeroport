@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"> </div>s
+    <div class="col-md-6">
+      <h3>Passengers#edit</h3>
+    </div>
+  </div>
+  <%= form_for @person, url: {action: "update"}, class: "form-horizontal" do |p| %>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :name, "NAME:" %></div>
+    <div class="col-md-7"><%= p.text_field :name, class: "form-control" %><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :firstname, "FIRST:" %></div>s
+    <div class="col-md-7"><%= p.text_field :firstname, class: "form-control" %><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :group_id, "FLIGHT:" %></div>
+    <div class="col-md-7"><%= p.collection_select :group_id, @groups, :id, :groupname, class: "form-control" %><br /><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :email, "EMAIL:" %></div>
+    <div class="col-md-7"><%= p.text_field :email, class: "form-control" %><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :age, "AGE:" %></div>
+    <div class="col-md-7"><%= p.text_field :age, class: "form-control" %><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :sex, "SEX:" %></div>
+    <%if @person.sex%>
+      <div class="col-md-2"><%= p.radio_button :sex, 0 %> MALE<br /><%= p.radio_button :sex, 1, :checked => true%> FEMALE<br /><br /></div>
+    <%else%>
+      <div class="col-md-2"><%= p.radio_button :sex, 0, :checked => true %> MALE<br /><%= p.radio_button :sex, 1%> FEMALE<br /><br /></div>
+      <%end%>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :des1, "PASSPORT:" %></div>
+    <div class="col-md-7"><%= p.text_field :des1, class: "form-control" %><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :des2, "BIRTH:" %></div>
+    <div class="col-md-7"><%= p.text_field :des2, class: "form-control" %><br /></div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-1"><%= p.label :des3, "RATED:" %></div>
+    <div class="col-md-7"><%= p.text_field :des3, class: "form-control" %><br /></div>
+  </div>
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-10">
+      <%= p.submit "SAVE PASSENGER", class: "btn btn-success"%>
+      <%= link_to "CANCEL", people_path, class: "btn btn-danger" %>
+    </div>
+  </div>
+  <% end %>
+</div>
